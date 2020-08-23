@@ -1,6 +1,8 @@
 import { Controller, Get, Param, Post, Body, Patch, Delete, Query, NotFoundException } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { Coffee } from './entities/coffee.entity';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -22,17 +24,17 @@ export class CoffeesController {
     }
 
     @Post()
-    create(@Body() body) {
-        return this.coffeesService.create(body);
+    create(@Body() createCoffeeDto: CreateCoffeeDto): Coffee {
+        return this.coffeesService.create(createCoffeeDto);
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() body) {
-        return this.coffeesService.update(id, body);
+    update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto): Coffee {
+        return this.coffeesService.update(id, updateCoffeeDto);
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
+    remove(@Param('id') id: string): Coffee {
         return this.coffeesService.remove(id);
     }
 }
