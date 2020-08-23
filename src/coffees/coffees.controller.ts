@@ -16,7 +16,7 @@ export class CoffeesController {
     findOne(@Param('id') id: string): Coffee {
         const coffee = this.coffeesService.findOne(id); 
         if (!coffee) {
-            throw new NotFoundException(`Coffe #${id} not found`);
+            throw new NotFoundException(`Coffee #${id} not found`);
         }
         return coffee;
     }
