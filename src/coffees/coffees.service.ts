@@ -25,8 +25,7 @@ export class CoffeesService {
 
     create(createCoffeeDto: any): Coffee {
         this.coffees.push(createCoffeeDto);
-        const [ createdCoffee ] = this.coffees.slice(-1);
-        return createdCoffee;
+        return createCoffeeDto;
     }
 
     update(id: string, updateCoffeeDto: any): Coffee {
